@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bifg24726lr1c"]
+
+[ext_resource type="PackedScene" uid="uid://bjv8dfh2jgjdj" path="res://maze/levels/maze_level_base.tscn" id="1_b6noc"]
+
+[node name="MazeLevelBase" instance=ExtResource("1_b6noc")]

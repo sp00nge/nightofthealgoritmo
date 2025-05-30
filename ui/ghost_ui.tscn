@@ -1,0 +1,181 @@
+[gd_scene load_steps=7 format=3 uid="uid://dflvatdjrce46"]
+
+[ext_resource type="FontFile" uid="uid://bf4lr1hbjkhdr" path="res://assets/DungeonFont.ttf" id="1_12x88"]
+[ext_resource type="Texture2D" uid="uid://bcqb1tt0pnix2" path="res://assets/hud/hudGolem.png" id="1_pm8aq"]
+[ext_resource type="Texture2D" uid="uid://dgdr5immyvh3l" path="res://assets/teclas/EMPTY1.png" id="2_pm8aq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6i03y"]
+font = ExtResource("1_12x88")
+font_size = 24
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o81c3"]
+atlas = ExtResource("2_pm8aq")
+region = Rect2(0, 0, 17, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k2ow0"]
+font = ExtResource("1_12x88")
+font_size = 24
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="GhostUI" type="CanvasLayer"]
+metadata/_edit_vertical_guides_ = [672.0]
+metadata/_edit_horizontal_guides_ = [128.0]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.84
+anchor_top = 0.16
+anchor_right = 0.99
+anchor_bottom = 1.0
+offset_top = -1.52588e-05
+offset_right = 7.99994
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+layout_mode = 2
+texture = ExtResource("1_pm8aq")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 36
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "P1"
+label_settings = SubResource("LabelSettings_6i03y")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_o81c3")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_o81c3")
+
+[node name="TextureRect3" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_o81c3")
+
+[node name="TextureRect4" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_o81c3")
+
+[node name="TextureRect5" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_o81c3")
+
+[node name="TextureRect6" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_o81c3")
+
+[node name="TextureRect7" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_o81c3")
+
+[node name="TextureRect8" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_o81c3")
+
+[node name="TextureRect9" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_o81c3")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "P2"
+label_settings = SubResource("LabelSettings_k2ow0")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_o81c3")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_o81c3")
+
+[node name="TextureRect3" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_o81c3")
+
+[node name="TextureRect4" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_o81c3")
+
+[node name="TextureRect5" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_o81c3")
+
+[node name="TextureRect6" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_o81c3")
+
+[node name="TextureRect7" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_o81c3")
+
+[node name="TextureRect8" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_o81c3")
+
+[node name="TextureRect9" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_o81c3")

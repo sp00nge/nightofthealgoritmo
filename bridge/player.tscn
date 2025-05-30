@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://cq58t5w6u48c3"]
+
+[ext_resource type="Texture2D" uid="uid://blm3le4lnd8bu" path="res://assets/knights/PlayerV3.png" id="1_2xde8"]
+[ext_resource type="Script" uid="uid://ciffwxqu13vvm" path="res://bridge/player.gd" id="1_bnmwf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnmwf"]
+size = Vector2(19.2, 9.6)
+
+[sub_resource type="Animation" id="Animation_2ty70"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gwjkx"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(0, 0), Vector2i(1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wteqm"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iv0pc"]
+_data = {
+&"RESET": SubResource("Animation_2ty70"),
+&"idle": SubResource("Animation_gwjkx"),
+&"walk": SubResource("Animation_wteqm")
+}
+
+[node name="Player" type="Area2D"]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("1_bnmwf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_2xde8")
+hframes = 5
+vframes = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5.68434e-14, 3.2)
+shape = SubResource("RectangleShape2D_bnmwf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_iv0pc")
+}
+autoplay = "idle"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0qeg721ye1so"]
+
+[ext_resource type="Texture2D" uid="uid://oc4s18ufkdiu" path="res://assets/bridge_set.png" id="1_akt7h"]
+[ext_resource type="Script" uid="uid://duqn7ftcfow0g" path="res://bridge/bridge_tile_curve.gd" id="1_j8455"]
+
+[node name="BridgeTileCurve" type="Area2D" groups=["bridge"]]
+script = ExtResource("1_j8455")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_akt7h")
+hframes = 4
+vframes = 2
+frame = 4
+
+[node name="ClickShape" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-12, -16, -12, -12, -16, -12, -16, 12, 3, 12, 3, 11, 4, 11, 4, 10, 5, 10, 5, 9, 6, 9, 6, 8, 7, 8, 7, 7, 8, 7, 8, 6, 9, 6, 9, 5, 10, 5, 10, 4, 11, 4, 11, 3, 12, 3, 12, -16)
+
+[node name="Edges" type="Area2D" parent="." groups=["edges"]]
+
+[node name="Edge1" type="CollisionPolygon2D" parent="Edges"]
+polygon = PackedVector2Array(-16, -12, -12, -12, -12, -16, -11, -16, -11, -11, -16, -11)
+
+[node name="Edge2" type="CollisionPolygon2D" parent="Edges"]
+polygon = PackedVector2Array(11, -16, 11, 2, 10, 2, 10, 3, 9, 3, 9, 4, 8, 4, 8, 5, 7, 5, 7, 6, 6, 6, 6, 7, 5, 7, 5, 8, 4, 8, 4, 9, 3, 9, 3, 10, 2, 10, 2, 11, -16, 11, -16, 12, 3, 12, 3, 11, 4, 11, 4, 10, 5, 10, 5, 9, 6, 9, 6, 8, 7, 8, 7, 7, 8, 7, 8, 6, 9, 6, 9, 5, 10, 5, 10, 4, 11, 4, 11, 3, 12, 3, 12, -16)

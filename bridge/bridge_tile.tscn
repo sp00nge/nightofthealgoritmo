@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://bl44sr2hcumki"]
+
+[ext_resource type="Texture2D" uid="uid://oc4s18ufkdiu" path="res://assets/bridge_set.png" id="1_06rkg"]
+[ext_resource type="Script" uid="uid://cki5wty02p3ed" path="res://bridge/bridge_tile.gd" id="1_qy2jh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qy2jh"]
+size = Vector2(32, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iv6y3"]
+size = Vector2(32, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d66eu"]
+size = Vector2(32, 1)
+
+[node name="BridgeTile" type="Area2D" groups=["bridge"]]
+disable_mode = 2
+script = ExtResource("1_qy2jh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_06rkg")
+hframes = 4
+vframes = 2
+frame = 1
+
+[node name="ClickShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qy2jh")
+
+[node name="Edges" type="Area2D" parent="." groups=["edges"]]
+collision_mask = 2
+
+[node name="Edge" type="CollisionShape2D" parent="Edges"]
+position = Vector2(0, -11.5)
+shape = SubResource("RectangleShape2D_iv6y3")
+
+[node name="Edge2" type="CollisionShape2D" parent="Edges"]
+position = Vector2(0, 11.5)
+shape = SubResource("RectangleShape2D_d66eu")

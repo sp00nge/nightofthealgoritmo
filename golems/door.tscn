@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://sgm60h2ll3rd"]
+
+[ext_resource type="Texture2D" uid="uid://bwmdj83eglfqr" path="res://assets/tiles.png" id="1_jgnro"]
+[ext_resource type="Script" uid="uid://6c84m4f7f4ic" path="res://golems/door.gd" id="1_tcgkh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tcgkh"]
+size = Vector2(54, 54)
+
+[node name="Door" type="Area2D" groups=["doors"]]
+collision_layer = 8
+collision_mask = 11
+script = ExtResource("1_tcgkh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("1_jgnro")
+hframes = 17
+vframes = 26
+frame = 276
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tcgkh")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=3 uid="uid://cm1udkyt73ld1"]
+
+[ext_resource type="Script" uid="uid://y8nhvupsrmlg" path="res://sliding/levels/sliding_level_base.gd" id="1_dvkqk"]
+[ext_resource type="Texture2D" uid="uid://brixaf3fctl1w" path="res://sliding/imagenes/vampiro.png" id="2_08fv4"]
+[ext_resource type="PackedScene" uid="uid://dwfix05bqdej3" path="res://ui/hud.tscn" id="3_7xuin"]
+[ext_resource type="Texture2D" uid="uid://cevfv5lwy8bl3" path="res://sliding/cuadro.png" id="4_xp5dg"]
+
+[node name="SlidingLevel_Base" type="Node2D"]
+script = ExtResource("1_dvkqk")
+base_image = ExtResource("2_08fv4")
+metadata/_edit_horizontal_guides_ = [128.0, 784.0, 128.0, 144.0]
+metadata/_edit_vertical_guides_ = [800.0, 80.0, 720.0]
+
+[node name="HUD" parent="." instance=ExtResource("3_7xuin")]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(640, 640)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 128.0
+offset_right = 800.0
+offset_bottom = 800.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.999516, 0.999685)
+texture = ExtResource("4_xp5dg")
+expand_mode = 1
+
+[node name="Tiles" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles"]
+texture = ExtResource("2_08fv4")
+centered = false
+hframes = 3
+vframes = 3
+
+[node name="Sprite2D2" type="Sprite2D" parent="Tiles"]
+texture = ExtResource("2_08fv4")
+centered = false
+hframes = 3
+vframes = 3
+frame = 1
+
+[node name="Sprite2D3" type="Sprite2D" parent="Tiles"]
+texture = ExtResource("2_08fv4")
+centered = false
+hframes = 3
+vframes = 3
+frame = 2
+
+[node name="Sprite2D4" type="Sprite2D" parent="Tiles"]
+texture = ExtResource("2_08fv4")
+centered = false
+hframes = 3
+vframes = 3
+frame = 3
+
+[node name="Sprite2D5" type="Sprite2D" parent="Tiles"]
+texture = ExtResource("2_08fv4")
+centered = false
+hframes = 3
+vframes = 3
+frame = 4
+
+[node name="Sprite2D6" type="Sprite2D" parent="Tiles"]
+texture = ExtResource("2_08fv4")
+centered = false
+hframes = 3
+vframes = 3
+frame = 5
+
+[node name="Sprite2D7" type="Sprite2D" parent="Tiles"]
+texture = ExtResource("2_08fv4")
+centered = false
+hframes = 3
+vframes = 3
+frame = 6
+
+[node name="Sprite2D8" type="Sprite2D" parent="Tiles"]
+texture = ExtResource("2_08fv4")
+centered = false
+hframes = 3
+vframes = 3
+frame = 7

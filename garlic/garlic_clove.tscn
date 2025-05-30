@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bba3jfokkqqmv"]
+
+[ext_resource type="Texture2D" uid="uid://ce8jkiaeh2vah" path="res://assets/garlic/clove.png" id="1_186lc"]
+[ext_resource type="Script" uid="uid://k6pj5f27oeoa" path="res://garlic/garlic_clove.gd" id="1_ne04o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ne04o"]
+size = Vector2(184, 152)
+
+[node name="GarlicClove" type="Area2D"]
+script = ExtResource("1_ne04o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_186lc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 12)
+shape = SubResource("RectangleShape2D_ne04o")

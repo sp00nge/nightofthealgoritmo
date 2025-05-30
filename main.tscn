@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://djp8nyml6oi21"]
+
+[ext_resource type="Script" uid="uid://cq4r4fdebnkrl" path="res://main.gd" id="1_ig7tw"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_ig7tw")
+metadata/_edit_vertical_guides_ = [800.0, 0.0]
+metadata/_edit_horizontal_guides_ = [800.0, 0.0, 128.0]
