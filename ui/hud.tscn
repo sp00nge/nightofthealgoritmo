@@ -1,11 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://dwfix05bqdej3"]
+[gd_scene load_steps=19 format=3 uid="uid://dwfix05bqdej3"]
 
 [ext_resource type="Texture2D" uid="uid://blm3le4lnd8bu" path="res://assets/knights/PlayerV3.png" id="1_7ihmi"]
 [ext_resource type="Script" uid="uid://cyhxcx5g6prif" path="res://ui/hud.gd" id="1_en2x2"]
 [ext_resource type="Texture2D" uid="uid://chm1ba67nm663" path="res://assets/hud/hud.png" id="2_1v5rv"]
 [ext_resource type="FontFile" uid="uid://bf4lr1hbjkhdr" path="res://assets/DungeonFont.ttf" id="2_en2x2"]
-[ext_resource type="Texture2D" uid="uid://5n8buki2dbod" path="res://assets/items.png" id="3_1v5rv"]
 [ext_resource type="Texture2D" uid="uid://o8r3npmnexjx" path="res://assets/ghosts/gosth.png" id="4_q43x7"]
+[ext_resource type="Texture2D" uid="uid://kp16qu4nicap" path="res://assets/tutorial/boton.png" id="6_srpbi"]
+[ext_resource type="AudioStream" uid="uid://sib2mkc7uo6k" path="res://assets/sounds/win.wav" id="7_q43x7"]
+[ext_resource type="Texture2D" uid="uid://dj5jpjmmrno3h" path="res://assets/tutorial/libro.png" id="7_srpbi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_srpbi"]
 atlas = ExtResource("1_7ihmi")
@@ -17,9 +19,11 @@ font_size = 24
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ff8ar"]
-atlas = ExtResource("3_1v5rv")
-region = Rect2(0, 702, 32, 32)
+[sub_resource type="LabelSettings" id="LabelSettings_q43x7"]
+font = ExtResource("2_en2x2")
+font_size = 24
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m0eg6"]
 atlas = ExtResource("4_q43x7")
@@ -38,6 +42,23 @@ bg_color = Color(0.6, 0.6, 0.6, 0.745098)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_srpbi"]
 bg_color = Color(0.6, 0.6, 0.6, 0.596078)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_spcu4"]
+texture = ExtResource("7_srpbi")
+expand_margin_left = 54.0
+expand_margin_top = 135.0
+expand_margin_right = 54.0
+expand_margin_bottom = 172.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ff8ar"]
+font = ExtResource("2_en2x2")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m0eg6"]
+font = ExtResource("2_en2x2")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_en2x2")
@@ -78,14 +99,13 @@ label_settings = SubResource("LabelSettings_spcu4")
 [node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
-text = "Items:"
+text = "Movimientos:"
 label_settings = SubResource("LabelSettings_spcu4")
 
-[node name="TextureRect2" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Score" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-texture = SubResource("AtlasTexture_ff8ar")
-expand_mode = 2
-stretch_mode = 3
+text = "0"
+label_settings = SubResource("LabelSettings_q43x7")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -100,6 +120,14 @@ expand_mode = 3
 layout_mode = 2
 text = "Nivel: 1-1"
 label_settings = SubResource("LabelSettings_spcu4")
+
+[node name="TextureButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 10
+texture_normal = ExtResource("6_srpbi")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="PanelContainer2" type="PanelContainer" parent="."]
 anchors_preset = 8
@@ -143,4 +171,53 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_q43x7")
 theme_override_styles/normal = SubResource("StyleBoxFlat_srpbi")
 text = "Siguiente Nivel"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PanelContainer2"]
+stream = ExtResource("7_q43x7")
+pitch_scale = 2.03
+
+[node name="TutorialPanel" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -376.0
+offset_top = -259.0
+offset_right = 376.0
+offset_bottom = 381.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_spcu4")
+
+[node name="MarginContainer" type="MarginContainer" parent="TutorialPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 55
+theme_override_constants/margin_top = 70
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TutorialPanel/MarginContainer"]
+custom_minimum_size = Vector2(648, 488)
+layout_mode = 2
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Tutorial" type="Label" parent="TutorialPanel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 480)
+layout_mode = 2
+size_flags_horizontal = 2
+text = "asdsffsdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+dsfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+label_settings = SubResource("LabelSettings_ff8ar")
+autowrap_mode = 1
+
+[node name="Tutorial2" type="Label" parent="TutorialPanel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 480)
+layout_mode = 2
+size_flags_horizontal = 2
+text = "sdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+fsdf"
+label_settings = SubResource("LabelSettings_m0eg6")
+autowrap_mode = 1
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="PanelContainer2/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

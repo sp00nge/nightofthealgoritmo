@@ -2,6 +2,8 @@ extends Node2D
 
 @onready var hud = $HUD
 @onready var complete_level = hud.get_node("PanelContainer2")
+@onready var complete_sound = complete_level.get_node("AudioStreamPlayer")
+@onready var score_text = hud.get_node("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Score")
 
 var bridge_s_scene = load("res://bridge/bridge_tile.tscn")
 var bridge_c_scene = load("res://bridge/bridge_tile_curve.tscn")
@@ -47,6 +49,7 @@ func spawn_player():
 
 func show_level_complete():
 	complete_level.show()
+	complete_sound.play()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("enter") and is_moving == false:
@@ -62,5 +65,8 @@ func _on_player_fell():
 	get_tree().reload_current_scene()
 	
 func _on_player_reached_goal():
+	var moves = $Player.get_moves()
 	complete = true
+	GameState.set_score(GameState.current_world, GameState.current_level, moves)
+	score_text.text = str(moves)
 	show_level_complete()

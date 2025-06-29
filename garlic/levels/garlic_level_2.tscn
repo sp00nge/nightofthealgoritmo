@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgqhpo4thk7gf"]
+
+[ext_resource type="PackedScene" uid="uid://c86juyw8t6qf8" path="res://garlic/levels/garlic_level_base.tscn" id="1_u8gyk"]
+
+[node name="GarlicLevel_Base" instance=ExtResource("1_u8gyk")]
+disk_num = 4

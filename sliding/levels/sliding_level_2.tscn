@@ -1,60 +1,61 @@
-[gd_scene load_steps=3 format=3 uid="uid://grvb1jnqd1tq"]
+[gd_scene load_steps=3 format=3 uid="uid://k8leamrreg13"]
 
-[ext_resource type="PackedScene" uid="uid://cm1udkyt73ld1" path="res://sliding/levels/sliding_level_base.tscn" id="1_u1ju2"]
-[ext_resource type="Texture2D" uid="uid://brixaf3fctl1w" path="res://sliding/imagenes/vampiro.png" id="2_70slr"]
+[ext_resource type="PackedScene" uid="uid://cm1udkyt73ld1" path="res://sliding/levels/sliding_level_base.tscn" id="1_7u2u4"]
+[ext_resource type="Texture2D" uid="uid://l0y778keqlhg" path="res://sliding/imagenes/puente.png" id="2_nknx6"]
 
-[node name="SlidingLevel_Base" instance=ExtResource("1_u1ju2")]
+[node name="SlidingLevel_Base" instance=ExtResource("1_7u2u4")]
+set_level = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Tiles" index="0"]
-texture = ExtResource("2_70slr")
+texture = ExtResource("2_nknx6")
 centered = false
 hframes = 3
 vframes = 3
 
 [node name="Sprite2D2" type="Sprite2D" parent="Tiles" index="1"]
-texture = ExtResource("2_70slr")
+texture = ExtResource("2_nknx6")
 centered = false
 hframes = 3
 vframes = 3
 frame = 1
 
 [node name="Sprite2D3" type="Sprite2D" parent="Tiles" index="2"]
-texture = ExtResource("2_70slr")
+texture = ExtResource("2_nknx6")
 centered = false
 hframes = 3
 vframes = 3
 frame = 2
 
 [node name="Sprite2D4" type="Sprite2D" parent="Tiles" index="3"]
-texture = ExtResource("2_70slr")
+texture = ExtResource("2_nknx6")
 centered = false
 hframes = 3
 vframes = 3
 frame = 3
 
 [node name="Sprite2D5" type="Sprite2D" parent="Tiles" index="4"]
-texture = ExtResource("2_70slr")
+texture = ExtResource("2_nknx6")
 centered = false
 hframes = 3
 vframes = 3
 frame = 4
 
 [node name="Sprite2D6" type="Sprite2D" parent="Tiles" index="5"]
-texture = ExtResource("2_70slr")
+texture = ExtResource("2_nknx6")
 centered = false
 hframes = 3
 vframes = 3
 frame = 5
 
 [node name="Sprite2D7" type="Sprite2D" parent="Tiles" index="6"]
-texture = ExtResource("2_70slr")
+texture = ExtResource("2_nknx6")
 centered = false
 hframes = 3
 vframes = 3
 frame = 6
 
 [node name="Sprite2D8" type="Sprite2D" parent="Tiles" index="7"]
-texture = ExtResource("2_70slr")
+texture = ExtResource("2_nknx6")
 centered = false
 hframes = 3
 vframes = 3

@@ -9,11 +9,15 @@ var tile_size = 32*4.167
 var next_pos = Vector2.ZERO
 var current_dir = Vector2.ZERO
 var queued_direction = Vector2.ZERO
+var moves = 0
 
 var inputs = {"right": Vector2.RIGHT,
 			"left": Vector2.LEFT,
 			"up": Vector2.UP,
 			"down": Vector2.DOWN}
+
+func get_moves():
+	return moves
 
 func reset(_position: Vector2):
 	position = _position
@@ -24,6 +28,7 @@ func move(dir):
 	await do_move(dir)
 
 func do_move(dir):
+	moves += 1
 	$AnimationPlayer.play("walk")
 	var tween = create_tween()
 	tween.tween_property(self ,"position", next_pos, 1.0 / animation_speed).set_trans(Tween.TRANS_SINE)

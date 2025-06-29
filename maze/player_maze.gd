@@ -8,6 +8,7 @@ var moving = false
 var tile_size = 32 #cambiar
 var next_pos = Vector2.ZERO
 var current_dir = Vector2.ZERO
+var moves = 0 
 
 var inputs = {"right": Vector2.RIGHT,
 			"left": Vector2.LEFT,
@@ -45,6 +46,7 @@ func move(dir):
 		await do_move(dir)
 
 func do_move(dir):
+	moves += 1
 	$AnimationPlayer.play("walk")
 	var tween = create_tween()
 	tween.tween_property(self ,"position", next_pos, 1.0 / animation_speed).set_trans(Tween.TRANS_SINE)
@@ -52,7 +54,9 @@ func do_move(dir):
 	await tween.finished
 	moving = false
 	$AnimationPlayer.play("idle")
-
+	
+func get_moves():
+	return moves
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("exit"):

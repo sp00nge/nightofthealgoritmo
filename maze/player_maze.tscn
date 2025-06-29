@@ -85,7 +85,6 @@ libraries = {
 autoplay = "idle"
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-scale = Vector2(1, 1)
 target_position = Vector2(0, 25.6)
 collide_with_areas = true
 

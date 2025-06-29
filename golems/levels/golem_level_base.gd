@@ -6,7 +6,9 @@ extends Node2D
 @onready var p2_label = ui.get_node("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/Label2")
 @onready var p1_orders = ui.get_node("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer")
 @onready var p2_orders = ui.get_node("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2")
+@onready var score_text = hud.get_node("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Score")
 @onready var complete_level = hud.get_node("PanelContainer2")
+@onready var complete_sound = complete_level.get_node("AudioStreamPlayer")
 
 var usable_scene = load("res://golems/pushable.tscn")
 var door_scene = load("res://golems/door.tscn")
@@ -157,4 +159,10 @@ func _on_golem_reached_goal(golem: Node):
 		show_level_complete()
 
 func show_level_complete():
+	var moves1 = $Golem.get_move_order()
+	var moves2 = $Golem.get_move_order()
+	var total_moves = moves1 + moves2
+	GameState.set_score(GameState.current_world, GameState.current_level, total_moves)
+	score_text.text = str(total_moves)
 	complete_level.show()
+	complete_sound.play()

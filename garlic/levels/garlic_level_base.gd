@@ -6,8 +6,11 @@ extends Node2D
 
 @onready var ui = $GhostUI
 @onready var hud = $HUD
+@onready var score_text = hud.get_node("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Score")
 @onready var complete_level = hud.get_node("PanelContainer2")
+@onready var complete_sound = complete_level.get_node("AudioStreamPlayer")
 
+var moves = 0
 var sizes = [0.4, 0.35, 0.3, 0.15]
 var spike_stacks = {
 	"Spike1": [],
@@ -54,7 +57,8 @@ func handle_drop(disk, spike_name: String) -> bool:
 		
 	spike_stacks[spike_name].append(disk)
 	disk.current_spike = spike_name
-	
+	moves += 1
+	check_level_complete()
 	return true
 
 func check_level_complete():
@@ -63,10 +67,16 @@ func check_level_complete():
 	
 func show_level_complete():
 	complete_level.show()
+	complete_sound.play()
+	GameState.set_score(GameState.current_world, GameState.current_level, moves)
 	
 func _ready() -> void:
 	complete_level.hide()
 	spawn_garlic(disk_num)
 
+func _unhandled_input(event: InputEvent) -> void:
+		if event.is_action_pressed("skip"):
+			show_level_complete()
+
 func _process(delta: float) -> void:
-	check_level_complete()
+	score_text.text = str(moves)

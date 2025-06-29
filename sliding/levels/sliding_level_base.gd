@@ -1,12 +1,15 @@
 extends Node2D
 
 @export var grid_size := 3
+@export var set_level := 1
 @export var base_image: Texture2D
 
 @onready var hud = $HUD
+@onready var score_text = hud.get_node("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Score")
 @onready var complete_level = hud.get_node("PanelContainer2")
+@onready var complete_sound = complete_level.get_node("AudioStreamPlayer")
 
-var TILE_SIZE = 640 / grid_size
+
 var grid = []
 var correct_grid = []
 var positions = []
@@ -15,6 +18,7 @@ var offset_x = 80
 var offset_y = 144
 var complete = false
 var moving = false
+var moves = 0
 
 # levels
 var tile_layouts = {
@@ -22,19 +26,42 @@ var tile_layouts = {
 		[2, 7, 5],
 		[4, 6, 1],
 		[3, 0, null],
+	],
+	2: [
+		[2, 5, 6],
+		[7, 0, 3],
+		[4, 1, null],
+	],
+	3: [
+		[ 7,  4,  5,  10],
+		[ 6,  13,  1,  12],
+		[ 2, 11,  14, 3],
+		[0, 9, 8, null],
+	],
+	4: [
+		[ 12,  2,  10,  8],
+		[ 14,  11,  13,  6],
+		[ 7, 4,  0, 3],
+		[9, 1, 5, null],
 	]
 }
 
+func get_tile_size() -> float:
+	return 640.0 / grid_size
+
+
 func generate_positions(n):
 	var positions := []
-	
+	var tile_size = get_tile_size()
+
 	for y in range(n):
 		var row := []
 		for x in range(n):
-			var pos = Vector2(offset_x + x * TILE_SIZE, offset_y + y * TILE_SIZE)
+			var pos = Vector2(offset_x + x * tile_size, offset_y + y * tile_size)
 			row.append(pos)
 		positions.append(row)
 	return positions
+
 
 func _ready():
 	complete_level.hide()
@@ -56,7 +83,7 @@ func _ready():
 				continue
 			
 			var tile = $Tiles.get_child(tile_index)
-			tile.scale = Vector2(TILE_SIZE / (1024.0 / grid_size), TILE_SIZE / (1024.0 / grid_size))
+			tile.scale = Vector2(0.625,0.625)
 			tile.position = positions[y][x]
 			grid[y].append(tile)
 			tile_index += 1
@@ -69,7 +96,7 @@ func _ready():
 	for y in grid_size:
 		grid[y] = []
 	
-	var layout = tile_layouts[1]
+	var layout = tile_layouts[set_level]
 	for y in range(grid_size):
 		for x in range(grid_size):
 			tile_index = layout[y][x]
@@ -78,13 +105,13 @@ func _ready():
 				empty_pos = positions[y][x]
 				continue
 			var tile = $Tiles.get_child(tile_index)
-			tile.scale = Vector2(TILE_SIZE / (1024.0 / grid_size), TILE_SIZE / (1024.0 / grid_size))
+			tile.scale = Vector2(Vector2(0.625,0.625))
 			tile.position = positions[y][x]
 			grid[y].append(tile)
 			
 	print(grid)
 	print(empty_pos)
-	print(positions.find(empty_pos, 0))
+	print(positions)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if complete == false and moving == false:
@@ -138,6 +165,8 @@ func move_tile(dir: String):
 	print(empty_pos)
 	print(positions.find(empty_pos, 0))
 	
+	moves += 1
+	score_text.text = str(moves)
 	moving = false
 	check_win()
 
@@ -151,3 +180,5 @@ func check_win():
 				return 
 	complete = true
 	complete_level.show()
+	complete_sound.play()
+	GameState.set_score(GameState.current_world, GameState.current_level, moves)

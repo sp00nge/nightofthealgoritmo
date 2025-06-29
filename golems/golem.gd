@@ -22,6 +22,9 @@ var inputs = {"right": Vector2.RIGHT,
 			"up": Vector2.UP,
 			"down": Vector2.DOWN}
 
+func get_move_order():
+	return move_order.size()
+
 func change_state(new_state):
 	if new_state == "SELECTED":
 		state = SELECTED

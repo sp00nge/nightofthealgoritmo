@@ -2,7 +2,9 @@ extends Node2D
 
 @onready var ui = $GhostUI
 @onready var hud = $HUD
+@onready var score_text = hud.get_node("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Score")
 @onready var complete_level = hud.get_node("PanelContainer2")
+@onready var complete_sound = complete_level.get_node("AudioStreamPlayer")
 
 var complete = false
 var is_moving = false
@@ -30,7 +32,11 @@ func spawn_player():
 			$PlayerMaze.reset(spawn_pos)
 
 func show_level_complete():
+	var moves = $PlayerMaze.get_moves()
+	score_text.text = str(moves)
+	GameState.set_score(GameState.current_world, GameState.current_level, moves)
 	complete_level.show()
+	complete_sound.play()
 
 func _on_player_reached_goal():
 	show_level_complete()

@@ -1,0 +1,112 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxupwq42ry6b3"]
+
+[ext_resource type="PackedScene" uid="uid://cm1udkyt73ld1" path="res://sliding/levels/sliding_level_base.tscn" id="1_qruho"]
+[ext_resource type="Texture2D" uid="uid://c8b0rdwv8vfuu" path="res://sliding/imagenes/cazando.png" id="2_2jcp6"]
+
+[node name="SlidingLevel_Base" instance=ExtResource("1_qruho")]
+grid_size = 4
+set_level = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles" index="0"]
+texture = ExtResource("2_2jcp6")
+centered = false
+hframes = 4
+vframes = 4
+
+[node name="Sprite2D2" type="Sprite2D" parent="Tiles" index="1"]
+texture = ExtResource("2_2jcp6")
+centered = false
+hframes = 4
+vframes = 4
+frame = 1
+
+[node name="Sprite2D3" type="Sprite2D" parent="Tiles" index="2"]
+texture = ExtResource("2_2jcp6")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+
+[node name="Sprite2D4" type="Sprite2D" parent="Tiles" index="3"]
+texture = ExtResource("2_2jcp6")
+centered = false
+hframes = 4
+vframes = 4
+frame = 3
+
+[node name="Sprite2D5" type="Sprite2D" parent="Tiles" index="4"]
+texture = ExtResource("2_2jcp6")
+centered = false
+hframes = 4
+vframes = 4
+frame = 4
+
+[node name="Sprite2D6" type="Sprite2D" parent="Tiles" index="5"]
+texture = ExtResource("2_2jcp6")
+centered = false
+hframes = 4
+vframes = 4
+frame = 5
+
+[node name="Sprite2D7" type="Sprite2D" parent="Tiles" index="6"]
+texture = ExtResource("2_2jcp6")
+centered = false
+hframes = 4
+vframes = 4
+frame = 6
+
+[node name="Sprite2D8" type="Sprite2D" parent="Tiles" index="7"]
+texture = ExtResource("2_2jcp6")
+centered = false
+hframes = 4
+vframes = 4
+frame = 7
+
+[node name="Sprite2D9" type="Sprite2D" parent="Tiles" index="8"]
+texture = ExtResource("2_2jcp6")
+centered = false
+hframes = 4
+vframes = 4
+frame = 8
+
+[node name="Sprite2D10" type="Sprite2D" parent="Tiles" index="9"]
+texture = ExtResource("2_2jcp6")
+centered = false
+hframes = 4
+vframes = 4
+frame = 9
+
+[node name="Sprite2D11" type="Sprite2D" parent="Tiles" index="10"]
+texture = ExtResource("2_2jcp6")
+centered = false
+hframes = 4
+vframes = 4
+frame = 10
+
+[node name="Sprite2D12" type="Sprite2D" parent="Tiles" index="11"]
+texture = ExtResource("2_2jcp6")
+centered = false
+hframes = 4
+vframes = 4
+frame = 11
+
+[node name="Sprite2D13" type="Sprite2D" parent="Tiles" index="12"]
+texture = ExtResource("2_2jcp6")
+centered = false
+hframes = 4
+vframes = 4
+frame = 12
+
+[node name="Sprite2D14" type="Sprite2D" parent="Tiles" index="13"]
+texture = ExtResource("2_2jcp6")
+centered = false
+hframes = 4
+vframes = 4
+frame = 13
+
+[node name="Sprite2D15" type="Sprite2D" parent="Tiles" index="14"]
+texture = ExtResource("2_2jcp6")
+centered = false
+hframes = 4
+vframes = 4
+frame = 14
