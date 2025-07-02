@@ -19,6 +19,7 @@ var levels_per_world = {
 
 
 var scores = {}
+var retries = {}
 
 var tutorials = {
 	"1": ["Tu objetivo es juntar a los fantasmas \n Dales instrucciones e intenta conseguir que se sobrepongan", "Click para seleccionar fantasma \n Flechas para dar instrucciones \n ENTER para ejecutar \n R para reiniciar nivel \n Consigue la menor cantidad de instrucciones"],
@@ -72,4 +73,21 @@ func get_total_score() -> int:
 	var total = 0
 	for score in scores.values():
 		total += score
+	return total
+	
+func add_retry(world: int, level: int):
+	var key = "m%s_n%s" % [world, level]
+	if retries.has(key):
+		retries[key] += 1
+	else:
+		retries[key] = 1
+
+func get_attempts(world:int, level: int):
+	var key = "m%s_n%s" % [world, level]
+	return retries.get(key, 0)
+
+func get_total_attempts() -> int:
+	var total = 0
+	for retry in retries.values():
+		total += retry
 	return total

@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cbmtdg866hhdr"]
+[gd_scene load_steps=15 format=3 uid="uid://cbmtdg866hhdr"]
 
 [ext_resource type="Script" uid="uid://dn04vbnrxjw6w" path="res://pantalla_fin.gd" id="1_fodjw"]
 [ext_resource type="Texture2D" uid="uid://tb6txabf3wjb" path="res://assets/fin/fin.png" id="1_uj3ng"]
 [ext_resource type="Texture2D" uid="uid://dj5jpjmmrno3h" path="res://assets/tutorial/libro.png" id="2_fodjw"]
 [ext_resource type="FontFile" uid="uid://bf4lr1hbjkhdr" path="res://assets/DungeonFont.ttf" id="3_6yf1o"]
+[ext_resource type="Texture2D" uid="uid://chm1ba67nm663" path="res://assets/hud/hud.png" id="5_6yf1o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uj3ng"]
 font = ExtResource("3_6yf1o")
@@ -18,6 +19,12 @@ expand_margin_top = 135.0
 expand_margin_right = 54.0
 expand_margin_bottom = 172.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_fodjw"]
+font = ExtResource("3_6yf1o")
+font_size = 18
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_yt7tb"]
 font = ExtResource("3_6yf1o")
 font_size = 32
@@ -27,6 +34,21 @@ font_color = Color(0, 0, 0, 1)
 font = ExtResource("3_6yf1o")
 font_size = 36
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_6yf1o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FinalPanel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_fodjw"]
 resource_name = "show"
@@ -44,26 +66,17 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_6yf1o"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FinalPanel:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_edvot"]
 _data = {
 &"RESET": SubResource("Animation_6yf1o"),
 &"show": SubResource("Animation_fodjw")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_edvot"]
+font = ExtResource("3_6yf1o")
+font_size = 54
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [node name="PantallaFin" type="CanvasLayer"]
 script = ExtResource("1_fodjw")
@@ -128,6 +141,10 @@ layout_mode = 2
 size_flags_vertical = 0
 alignment = 1
 
+[node name="ScoreText" type="Label" parent="FinalPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_fodjw")
+
 [node name="Hoja" type="Label" parent="FinalPanel/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(300, 480)
 layout_mode = 2
@@ -147,3 +164,37 @@ libraries = {
 &"": SubResource("AnimationLibrary_edvot")
 }
 autoplay = "show"
+
+[node name="TextureButton" type="TextureButton" parent="."]
+anchors_preset = -1
+anchor_left = 0.51
+anchor_top = 0.88
+anchor_right = 0.51
+anchor_bottom = 0.88
+offset_left = -200.0
+offset_top = -32.0001
+offset_right = 600.0
+offset_bottom = 95.9999
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("5_6yf1o")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="TextureButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -249.5
+offset_top = -27.5
+offset_right = 249.5
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Ver Informacion General"
+label_settings = SubResource("LabelSettings_edvot")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

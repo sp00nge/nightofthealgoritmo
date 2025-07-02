@@ -44,9 +44,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		await $Golem2.move()
 		is_moving = false
 		if !complete:
+			GameState.add_retry(GameState.current_world, GameState.current_level)
 			get_tree().reload_current_scene()
-	#if event.is_action_pressed("reset"):
-		#get_tree().reload_current_scene()
+	if event.is_action_pressed("reset"):
+		GameState.add_retry(GameState.current_world, GameState.current_level)
+		get_tree().reload_current_scene()
 	if event.is_action_pressed("skip"):
 		show_level_complete()
 
