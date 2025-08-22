@@ -5,6 +5,7 @@ extends Node2D
 @onready var complete_sound = complete_level.get_node("AudioStreamPlayer")
 @onready var score_text = hud.get_node("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Score")
 
+var start_time: int
 var bridge_s_scene = load("res://bridge/bridge_tile.tscn")
 var bridge_c_scene = load("res://bridge/bridge_tile_curve.tscn")
 var is_moving = false
@@ -16,6 +17,7 @@ func _ready() -> void:
 	$TileMapLayer2.hide()
 	spawn_bridge()
 	spawn_player()
+	start_time = Time.get_unix_time_from_system()
 	$Player.fell.connect(_on_player_fell)
 	$Player.reached_goal.connect(_on_player_reached_goal)
 	#$Golem.reached_goal.connect(_on_golem_reached_goal)
@@ -48,6 +50,10 @@ func spawn_player():
 		$Player.reset(spawn_pos)
 
 func show_level_complete():
+	var end_time = Time.get_unix_time_from_system()
+	var duration = floori(end_time - start_time)
+	GameState.set_time(GameState.current_world, GameState.current_level, duration)
+	print(duration)
 	complete_level.show()
 	complete_sound.play()
 

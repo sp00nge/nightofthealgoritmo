@@ -8,8 +8,10 @@ extends Node2D
 
 var complete = false
 var is_moving = false
+var start_time: int
 
 func _ready() -> void:
+	start_time = Time.get_unix_time_from_system()
 	$Spawn.hide()
 	complete_level.hide()
 	spawn_player()
@@ -32,6 +34,10 @@ func spawn_player():
 			$PlayerMaze.reset(spawn_pos)
 
 func show_level_complete():
+	var end_time = Time.get_unix_time_from_system()
+	var duration = floori(end_time - start_time)
+	GameState.set_time(GameState.current_world, GameState.current_level, duration)
+	print(duration)
 	var moves = $PlayerMaze.get_moves()
 	score_text.text = str(moves)
 	GameState.set_score(GameState.current_world, GameState.current_level, moves)

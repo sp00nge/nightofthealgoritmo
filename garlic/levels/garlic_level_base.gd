@@ -10,6 +10,7 @@ extends Node2D
 @onready var complete_level = hud.get_node("PanelContainer2")
 @onready var complete_sound = complete_level.get_node("AudioStreamPlayer")
 
+var start_time: int
 var moves = 0
 var sizes = [0.4, 0.35, 0.3, 0.15]
 var spike_stacks = {
@@ -66,11 +67,16 @@ func check_level_complete():
 		show_level_complete()
 	
 func show_level_complete():
+	var end_time = Time.get_unix_time_from_system()
+	var duration = floori(end_time - start_time)
+	GameState.set_time(GameState.current_world, GameState.current_level, duration)
+	print(duration)
 	complete_level.show()
 	complete_sound.play()
 	GameState.set_score(GameState.current_world, GameState.current_level, moves)
 	
 func _ready() -> void:
+	start_time = Time.get_unix_time_from_system()
 	complete_level.hide()
 	spawn_garlic(disk_num)
 

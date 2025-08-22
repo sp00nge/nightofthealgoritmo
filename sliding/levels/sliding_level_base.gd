@@ -19,6 +19,7 @@ var offset_y = 144
 var complete = false
 var moving = false
 var moves = 0
+var start_time: int
 
 # levels
 var tile_layouts = {
@@ -64,6 +65,7 @@ func generate_positions(n):
 
 
 func _ready():
+	start_time = Time.get_unix_time_from_system()
 	complete_level.hide()
 	
 	grid.resize(grid_size)
@@ -182,3 +184,7 @@ func check_win():
 	complete_level.show()
 	complete_sound.play()
 	GameState.set_score(GameState.current_world, GameState.current_level, moves)
+	var end_time = Time.get_unix_time_from_system()
+	var duration = floori(end_time - start_time)
+	GameState.set_time(GameState.current_world, GameState.current_level, duration)
+	print(duration)

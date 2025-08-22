@@ -21,8 +21,10 @@ var is_moving = false
 var selected_ghost = null
 var ghosts_at_goal = []
 var complete = false
+var start_time: int
 
 func _ready() -> void:
+	start_time = Time.get_unix_time_from_system()
 	$Spawns.hide()
 	$Usables.hide()
 	$ItemsSpawn.hide()
@@ -161,6 +163,10 @@ func _on_golem_reached_goal(golem: Node):
 		show_level_complete()
 
 func show_level_complete():
+	var end_time = Time.get_unix_time_from_system()
+	var duration = floori(end_time - start_time)
+	GameState.set_time(GameState.current_world, GameState.current_level, duration)
+	print(duration)
 	var moves1 = $Golem.get_move_order()
 	var moves2 = $Golem.get_move_order()
 	var total_moves = moves1 + moves2

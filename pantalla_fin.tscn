@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://cbmtdg866hhdr"]
+[gd_scene load_steps=18 format=3 uid="uid://cbmtdg866hhdr"]
 
 [ext_resource type="Script" uid="uid://dn04vbnrxjw6w" path="res://pantalla_fin.gd" id="1_fodjw"]
 [ext_resource type="Texture2D" uid="uid://tb6txabf3wjb" path="res://assets/fin/fin.png" id="1_uj3ng"]
 [ext_resource type="Texture2D" uid="uid://dj5jpjmmrno3h" path="res://assets/tutorial/libro.png" id="2_fodjw"]
 [ext_resource type="FontFile" uid="uid://bf4lr1hbjkhdr" path="res://assets/DungeonFont.ttf" id="3_6yf1o"]
-[ext_resource type="Texture2D" uid="uid://chm1ba67nm663" path="res://assets/hud/hud.png" id="5_6yf1o"]
+[ext_resource type="FontFile" uid="uid://csblemmsfex8r" path="res://assets/Sinister Fonts/monogram-extended.ttf" id="5_edvot"]
+[ext_resource type="Texture2D" uid="uid://bft24dcp63ns7" path="res://assets/hud/Button (5).png" id="6_edvot"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uj3ng"]
 font = ExtResource("3_6yf1o")
@@ -20,19 +21,19 @@ expand_margin_right = 54.0
 expand_margin_bottom = 172.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_fodjw"]
-font = ExtResource("3_6yf1o")
-font_size = 18
+font = ExtResource("5_edvot")
+font_size = 24
 font_color = Color(0, 0, 0, 1)
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_yt7tb"]
-font = ExtResource("3_6yf1o")
-font_size = 32
+font = ExtResource("5_edvot")
+font_size = 38
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_yajvv"]
-font = ExtResource("3_6yf1o")
-font_size = 36
+font = ExtResource("5_edvot")
+font_size = 38
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_6yf1o"]
@@ -71,6 +72,14 @@ _data = {
 &"RESET": SubResource("Animation_6yf1o"),
 &"show": SubResource("Animation_fodjw")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yt7tb"]
+atlas = ExtResource("6_edvot")
+region = Rect2(0, 0, 34, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yajvv"]
+atlas = ExtResource("6_edvot")
+region = Rect2(0, 14, 34, 10)
 
 [sub_resource type="LabelSettings" id="LabelSettings_edvot"]
 font = ExtResource("3_6yf1o")
@@ -167,18 +176,19 @@ autoplay = "show"
 
 [node name="TextureButton" type="TextureButton" parent="."]
 anchors_preset = -1
-anchor_left = 0.51
-anchor_top = 0.88
-anchor_right = 0.51
-anchor_bottom = 0.88
-offset_left = -200.0
-offset_top = -32.0001
-offset_right = 600.0
-offset_bottom = 95.9999
+anchor_left = 0.2
+anchor_top = 0.89
+anchor_right = 0.2
+anchor_bottom = 0.89
+offset_left = -96.0
+offset_top = -48.0001
+offset_right = 167.0
+offset_bottom = 66.9999
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("5_6yf1o")
+scale = Vector2(0.73, 0.835)
+texture_normal = SubResource("AtlasTexture_yt7tb")
+texture_pressed = SubResource("AtlasTexture_yajvv")
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="TextureButton"]
@@ -188,13 +198,84 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -249.5
-offset_top = -27.5
-offset_right = 249.5
-offset_bottom = 27.5
+offset_left = -87.6644
+offset_top = -28.7575
+offset_right = 78.3356
+offset_bottom = 26.2425
 grow_horizontal = 2
 grow_vertical = 2
-text = "Ver Informacion General"
+text = "Intentos"
 label_settings = SubResource("LabelSettings_edvot")
+horizontal_alignment = 1
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.89
+anchor_right = 0.2
+anchor_bottom = 0.89
+offset_left = 152.0
+offset_top = -48.0001
+offset_right = 415.0
+offset_bottom = 66.9999
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.73, 0.835)
+texture_normal = SubResource("AtlasTexture_yt7tb")
+texture_pressed = SubResource("AtlasTexture_yajvv")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="TextureButton2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.6644
+offset_top = -28.7575
+offset_right = 78.3356
+offset_bottom = 26.2425
+grow_horizontal = 2
+grow_vertical = 2
+text = "Puntajes"
+label_settings = SubResource("LabelSettings_edvot")
+horizontal_alignment = 1
+
+[node name="TextureButton3" type="TextureButton" parent="."]
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.89
+anchor_right = 0.2
+anchor_bottom = 0.89
+offset_left = 400.0
+offset_top = -48.0001
+offset_right = 663.0
+offset_bottom = 66.9999
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.73, 0.835)
+texture_normal = SubResource("AtlasTexture_yt7tb")
+texture_pressed = SubResource("AtlasTexture_yajvv")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="TextureButton3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.6644
+offset_top = -28.7575
+offset_right = 78.3356
+offset_bottom = 26.2425
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tiempos"
+label_settings = SubResource("LabelSettings_edvot")
+horizontal_alignment = 1
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[connection signal="pressed" from="TextureButton3" to="." method="_on_texture_button_3_pressed"]
